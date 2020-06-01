@@ -21,40 +21,37 @@ public class Gui extends JFrame {
 	private JTextField input = new JTextField ("50", 3);
 	private JButton button2 = new JButton ("Zapisz w plik");
 	private JLabel label = new JLabel ("liczba generacji:");
-	
+	private JButton button3 = new JButton ("Start");
+	String [][] array = new String [50][50];
+	String [] head = new String [50];
+	JTable table1;
+
 	public Gui () {
 		super ("WireWorld by KK");
-		this.setBounds(100,100,1100,800);
+		this.setBounds(100,100,1100,850);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//JTable table1 = new JTable(array, columnsHeader);
-		
-		DefaultTableModel model = new DefaultTableModel(50, 50);
-		JTable table2 = new JTable(model);
-        table2.setRowSelectionAllowed(false);
-        table2.setColumnSelectionAllowed(false);
-        table2.setRowHeight(13);
-        TableColumnModel columnModel = table2.getColumnModel();
-        for (int i = 0; i < 50; i++) {
-        	columnModel.getColumn(i).setMaxWidth(6);
-        }
-       
-        columnModel.getColumn(1).setPreferredWidth(5);
-        table2.setIntercellSpacing(new Dimension(0, 0));
-        table2.setGridColor(Color.black);
+		for (int i = 0; i < 50; i++)
+			head[i] = "0";
+		table1 = new JTable (array, head);
+		table1.setTableHeader(null);
+        table1.setRowSelectionAllowed(false);
+        table1.setColumnSelectionAllowed(false);
+        table1.setIntercellSpacing(new Dimension(0, 0));
 		
         JPanel panel = new JPanel (null);
         this.add(panel, BorderLayout.CENTER);
-        table2.setBounds(10, 10, 690, 650);
-        button.setBounds(750, 250, 120, 30);
-        label.setBounds(750, 310, 120, 30);
-        input.setBounds(750, 350, 120, 30);
-        button2.setBounds(750, 420, 120, 30);
-        panel.add(table2);
+        table1.setBounds(0, 0, 735, 736);
+        button.setBounds(800, 230, 120, 30);
+        label.setBounds(800, 280, 120, 30);
+        input.setBounds(800, 320, 120, 30);
+        button2.setBounds(800, 380, 120, 30);
+        button3.setBounds(800, 450, 120, 30);
+        panel.add(table1);
         panel.add(button);
         panel.add(label);
         panel.add(input);
         panel.add(button2);
+        panel.add(button3);
 
         this.setVisible(true);
         /*
